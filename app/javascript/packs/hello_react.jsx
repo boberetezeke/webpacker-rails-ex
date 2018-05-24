@@ -5,6 +5,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
+import MyButton from './components/my_button.jsx'
 
 const Hello = props => (
   <div>Hello {props.name}!</div>
@@ -20,7 +21,11 @@ Hello.propTypes = {
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <Hello name="React" />,
+    (<div>
+    <Hello name="Steve" />
+    <MyButton name="Button Yay!" />
+    </div>),
+    //<Hello name="Steve" />,
     document.body.appendChild(document.createElement('div')),
   )
 })
