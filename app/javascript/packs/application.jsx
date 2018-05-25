@@ -4,28 +4,11 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import PropTypes from 'prop-types'
-import MyButton from './components/my_button.jsx'
-
-const Hello = props => (
-  <div>Hello {props.name}!</div>
-)
-
-Hello.defaultProps = {
-  name: 'David'
-}
-
-Hello.propTypes = {
-  name: PropTypes.string
-}
+import Routes from './components/routes.jsx'
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    (<div>
-    <Hello name="Steve" />
-    <MyButton name="Button Yay!" />
-    </div>),
-    //<Hello name="Steve" />,
+    <Routes /> ,
     document.body.appendChild(document.createElement('div')),
   )
 })
