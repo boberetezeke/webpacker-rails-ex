@@ -1,16 +1,6 @@
 import { connect } from 'react-redux'
 import Todos from '../components/todos'
-
-export const VisibilityFilters = {
-  SHOW_ALL: 'SHOW_ALL',
-  SHOW_COMPLETED: 'SHOW_COMPLETED',
-  SHOW_ACTIVE: 'SHOW_ACTIVE'
-};
-
-export const toggleTodo = id => ({
-  type: 'TOGGLE_TODO',
-  id
-});
+import { VisibilityFilters, toggleTodo } from "../constants/todo_constants";
 
 const getVisibleTodos = (todos, filter) => {
   switch (filter) {
@@ -26,8 +16,8 @@ const getVisibleTodos = (todos, filter) => {
 };
 
 const mapStateToProps = state => ({
-  //todos: getVisibleTodos(state.todos, state.visibilityFilter)
-  todos: getVisibleTodos([{text: 'todo 1', completed: true, key: 1}, {text: 'todo 2', completed: false, key: 2}], VisibilityFilters.SHOW_ALL)
+  todos: getVisibleTodos(state.todos, state.visibilityFilter)
+  // todos: getVisibleTodos([{text: 'todo 1', completed: true, key: 1}, {text: 'todo 2', completed: false, key: 2}], VisibilityFilters.SHOW_ALL)
 });
 
 const mapDispatchToProps = dispatch => ({

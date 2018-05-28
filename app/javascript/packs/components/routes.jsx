@@ -8,8 +8,9 @@ import { Provider } from 'react-redux'
 import { createBrowserHistory } from 'history';
 
 import { rootReducer } from "../store/root_reducer";
+import { VisibilityFilters } from "../constants/todo_constants";
 
-const initialState = {}
+const initialState = { }
 
 const store = createStore(
   rootReducer,
