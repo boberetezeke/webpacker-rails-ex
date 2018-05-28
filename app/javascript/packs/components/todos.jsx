@@ -3,6 +3,7 @@ import Hello from './hello'
 import MyButton from './my_button'
 import { connect } from 'react-redux';
 import Todo from './todo';
+import AddTodo from './add_todo';
 
 /*
 const Todos = props => (
@@ -13,15 +14,18 @@ const Todos = props => (
 )*/
 
 const Todos = ({ todos, toggleTodo }) => (
-  <ul>
-    {todos.map(todo =>
-      <Todo
-        key={todo.id}
-        {...todo}
-        onClick={() => toggleTodo(todo.id)}
-      />
-    )}
-  </ul>
+  <div>
+    <ul>
+      {todos.map(todo =>
+        <Todo
+          key={todo.id}
+          {...todo}
+          onClick={() => toggleTodo(todo.id)}
+        />
+      )}
+    </ul>
+    <AddTodo/>
+  </div>
 )
 
 export default Todos;
