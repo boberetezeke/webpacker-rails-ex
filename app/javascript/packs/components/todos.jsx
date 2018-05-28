@@ -16,7 +16,7 @@ const Todos = props => (
 const Todos = ({ todos, toggleTodo }) => (
   <div>
     <ul>
-      {todos.map(todo =>
+      {todos.todos.map(todo =>
         <Todo
           key={todo.id}
           {...todo}

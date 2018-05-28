@@ -10,15 +10,26 @@ import { createBrowserHistory } from 'history';
 import { rootReducer } from "../store/root_reducer";
 import { VisibilityFilters } from "../constants/todo_constants";
 
-const initialState = { }
-
 const store = createStore(
   rootReducer,
-  initialState,
   applyMiddleware(
     thunkMiddleware
   )
 )
+
+window.setTimeout(() => {
+  console.log("initial load done")
+  store.dispatch({
+    type: 'LOAD_REMOTE_TODOS',
+    todos: [
+      {
+        id: 10,
+        text: 'loaded todo',
+        completed: false
+      }
+    ]
+  })
+}, 2000)
 
 const history = createBrowserHistory();
 

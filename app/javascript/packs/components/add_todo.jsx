@@ -2,11 +2,17 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 let nextTodoId = 0
-export const addTodo = text => ({
-  type: 'ADD_TODO',
-  id: nextTodoId++,
-  text
-});
+export const addTodo = text => {
+  return dispatch => {
+    window.setTimeout(() => {
+      dispatch({
+        type: 'ADD_TODO',
+        id: nextTodoId++,
+        text
+      })
+    }, 2000)
+  }
+};
 
 const AddTodo = ({ dispatch }) => {
   let input;
