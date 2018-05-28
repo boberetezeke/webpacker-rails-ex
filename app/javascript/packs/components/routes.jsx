@@ -1,5 +1,5 @@
 import React from 'react'
-import Todos from './todos'
+import VisibleTodos from './visible_todos'
 
 import { Router, Route, Link, Switch } from 'react-router-dom'
 import { createStore, applyMiddleware } from 'redux';
@@ -27,7 +27,7 @@ const Routes = props => (
   <Provider store={store}>
     <Router history={history}>
       <Switch>
-        <Route path="/" component={Todos}/>
+        <Route path="/" component={VisibleTodos}/>
       </Switch>
     </Router>
   </Provider>
