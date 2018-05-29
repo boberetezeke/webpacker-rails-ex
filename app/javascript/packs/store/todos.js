@@ -16,7 +16,7 @@ export function todos(state = {loaded: false, todos: []}, action) {
       }
     case 'TOGGLE_TODO':
       return {
-        todos: state.map(todo =>
+        todos: state.todos.map(todo =>
           (todo.id == action.id) ?
             {...todo, completed: !todo.completed} :
             todo

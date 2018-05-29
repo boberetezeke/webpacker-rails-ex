@@ -1,6 +1,28 @@
 import { connect } from 'react-redux'
 import Todos from '../components/todos'
-import { VisibilityFilters, toggleTodo } from "../constants/todo_constants";
+import { VisibilityFilters, toggleTodoAction } from "../constants/todo_constants";
+import { toggleTodo } from "../services/todo_service";
+
+export const toggleRemoteTodo = id => {
+  // toggleTodo(id).then((response) => {
+  //   if (response.ok) {
+  //     response.json().then(json => {
+  //       //dispatch(toggleTodoAction(todo.id))
+  //     })
+  //   }
+  // })
+  // return toggleTodoAction(id)
+
+  return dispatch => {
+    toggleTodo(id).then((response) => {
+      if (response.ok) {
+        response.json().then(json => {
+          dispatch(toggleTodoAction(id))
+        })
+      }
+    })
+  }
+};
 
 const getVisibleTodos = (todos, filter) => {
   switch (filter) {
@@ -17,11 +39,10 @@ const getVisibleTodos = (todos, filter) => {
 
 const mapStateToProps = state => ({
   todos: getVisibleTodos(state.todos, state.visibilityFilter)
-  // todos: getVisibleTodos([{text: 'todo 1', completed: true, key: 1}, {text: 'todo 2', completed: false, key: 2}], VisibilityFilters.SHOW_ALL)
 });
 
 const mapDispatchToProps = dispatch => ({
-  toggleTodo: id => dispatch(toggleTodo(id))
+  toggleTodo: id => dispatch(toggleRemoteTodo(id))
 });
 
 export default connect(

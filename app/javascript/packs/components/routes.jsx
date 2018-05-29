@@ -8,7 +8,7 @@ import { Provider } from 'react-redux'
 import { createBrowserHistory } from 'history';
 
 import { rootReducer } from "../store/root_reducer";
-import { VisibilityFilters } from "../constants/todo_constants";
+import { getTodos } from "../services/todo_service"
 
 const store = createStore(
   rootReducer,
@@ -17,23 +17,10 @@ const store = createStore(
   )
 )
 
-window.setTimeout(() => {
-  console.log("initial load done")
-  store.dispatch({
-    type: 'LOAD_REMOTE_TODOS',
-    todos: [
-      {
-        id: 10,
-        text: 'loaded todo',
-        completed: false
-      }
-    ]
-  })
-}, 2000)
+// get initial state
+getTodos(store);
 
 const history = createBrowserHistory();
-
-// <Router history={history}>
 
 const Routes = props => (
   <Provider store={store}>
@@ -44,11 +31,5 @@ const Routes = props => (
     </Router>
   </Provider>
 )
-
-/*
-const Routes = props => (
-  <Todos />
-)
-*/
 
 export default Routes;

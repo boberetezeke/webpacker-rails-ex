@@ -1,16 +1,21 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { createTodo } from "../services/todo_service";
 
-let nextTodoId = 0
 export const addTodo = text => {
   return dispatch => {
-    window.setTimeout(() => {
-      dispatch({
-        type: 'ADD_TODO',
-        id: nextTodoId++,
-        text
-      })
-    }, 2000)
+    createTodo({text: text, completed: false}).then((response) => {
+      if (response.ok) {
+        response.json().then(json => {
+          dispatch({
+            type: 'ADD_TODO',
+            id: json.id,
+            text: json.text,
+            completed: json.completed
+          })
+        })
+      }
+    })
   }
 };
 
